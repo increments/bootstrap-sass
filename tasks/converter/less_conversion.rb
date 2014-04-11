@@ -92,7 +92,7 @@ class Converter
               // a flag to toggle asset pipeline / compass integration
               // defaults to true if twbs-font-path function is present (no function => twbs-font-path('') parsed as string == right side)
               // in Sass 3.3 this can be improved with: function-exists(twbs-font-path)
-              $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")')) !default;
+              $bootstrap3-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")')) !default;
             SCSS
             file = replace_all file, /(\$icon-font-path:).*(!default)/, '\1 "bootstrap/" \2'
           when 'close.less'
@@ -162,7 +162,7 @@ class Converter
     end
 
     def replace_asset_url(rule, type)
-      replace_all rule, /url\((.*?)\)/, "url(if($bootstrap-sass-asset-helper, twbs-#{type}-path(\\1), \\1))"
+      replace_all rule, /url\((.*?)\)/, "url(if($bootstrap3-sass-asset-helper, twbs-#{type}-path(\\1), \\1))"
     end
 
     # convert recursively evaluated selector $list to @for loop

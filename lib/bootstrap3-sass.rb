@@ -1,8 +1,8 @@
-module Bootstrap
+module Bootstrap3
   class << self
     # Inspired by Kaminari
     def load!
-      require 'bootstrap-sass/sass_functions'
+      require 'bootstrap3-sass/sass_functions'
       register_compass_extension if compass?
 
       if rails?
@@ -57,7 +57,7 @@ module Bootstrap
 
     def register_compass_extension
       ::Compass::Frameworks.register(
-          'bootstrap',
+          'bootstrap3',
           :path                  => gem_path,
           :stylesheets_directory => stylesheets_path,
           :templates_directory   => File.join(gem_path, 'templates')
@@ -65,9 +65,9 @@ module Bootstrap
     end
 
     def register_rails_engine
-      require 'bootstrap-sass/engine'
+      require 'bootstrap3-sass/engine'
     end
   end
 end
 
-Bootstrap.load!
+Bootstrap3.load!
